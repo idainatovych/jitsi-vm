@@ -15,8 +15,3 @@ npm link lib-jitsi-meet
 
 echo "Installing dependencies"
 npm install --force
-
-#echo "Building the project"
-#cd /jitsi-meet
-#make
-#sudo static-server --port 80
