@@ -1,0 +1,32 @@
+
+server {
+       listen 443;
+       server_name localhost;
+
+       root jitsi-meet;
+       index index.html index.htm;
+
+       ssl on;
+       ssl_certificate      /etc/ssl/certs/jitsissl.crt;
+       ssl_certificate_key  /etc/ssl/private/jitsissl.key;
+
+       ssl_session_timeout 5m;
+
+       ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+       ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+       ssl_prefer_server_ciphers on;
+
+       keepalive_timeout    70;
+
+       location /css {
+         try_files $uri $uri/ =404;
+       }
+
+       location /dist {
+         try_files $uri $uri/ =404;
+       }
+
+       location / {
+         proxy_pass  https://illia.jitsi.net;
+       }
+}

@@ -39,6 +39,7 @@ Vagrant.configure(2) do |config|
   # argument is a set of non-required options.
    config.vm.synced_folder "../jitsi-meet", "/jitsi-meet"
    config.vm.synced_folder "../lib-jitsi-meet", "/lib-jitsi-meet"
+   config.vm.synced_folder "./provision", "/provision"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -65,5 +66,5 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-   config.vm.provision "shell", path: "vm-provision.sh"
+   config.vm.provision "shell", path: "provision/vm-provision.sh"
 end

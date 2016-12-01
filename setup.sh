@@ -31,5 +31,13 @@ else
   echo "Alias exist"
 fi
 
+echo "Link lib-jitsi-meet dependency to local copy"
+cd ../lib-jitsi-meet
+npm link
+cd ../jitsi-meet
+npm link lib-jitsi-meet
+
+echo "build application"
+make
+
 printf "\n=============== Done ===============\n"
-printf "Done! Run vagrant build to build the project\n"
